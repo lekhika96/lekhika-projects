@@ -40,7 +40,6 @@ export class ItemListComponent implements OnInit, AfterViewInit {
     this.http.get<any>('https://api.npoint.io/968a7b840f0d8dc3458d').subscribe((response: InventoryItem[]) => {
       this.gridData.data = response;
       this.gridData.paginator = this.paginator;
-      console.log(response);
     });
   }
 
@@ -102,7 +101,6 @@ export class ItemListComponent implements OnInit, AfterViewInit {
   }
 
   public onSortChange(sort: Sort) {
-    console.log(sort);
     const data = this.gridData.data.slice();
     if (!sort.active || sort.direction === '') {
       this.sortedData = data;
