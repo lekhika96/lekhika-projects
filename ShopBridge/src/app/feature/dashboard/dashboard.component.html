@@ -1,0 +1,19 @@
+<mat-card>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxLayout="column" class="m-b-20" *ngIf="!showInfo">
+      <button mat-raised-button color="primary" (click)="showHideInformation()">About ShopBridge</button>
+    </div>
+    <div fxLayout="column" class="m-b-20" *ngIf="showInfo">
+      <button mat-raised-button color="accent" (click)="showHideInformation()">Hide ShopBridge Information</button>
+    </div>
+    <p *ngIf="showInfo">ShopBridge has an application where there is a list of gadgets present which includes its model number, description, price and other details.
+      <br>
+      We can add new product or edit the existing product in the inventory. We can also delete a product from this inventory.
+      <br>
+    </p>
+
+    <div fxLayout="column">
+      <button mat-raised-button color="primary" (click)="goToInventory()">Go To Inventory</button>
+    </div>
+  </div>
+</mat-card>

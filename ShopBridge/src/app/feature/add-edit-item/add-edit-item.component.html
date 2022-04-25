@@ -1,0 +1,59 @@
+<mat-toolbar class="m-b-2" mat-dialog-title color="primary">
+  <mat-toolbar-row>
+    <h2>{{isUpdate ? 'Edit Product' : 'Add Product'}}</h2>
+  </mat-toolbar-row>
+</mat-toolbar>
+<form #addEditForm="ngForm">
+  <mat-dialog-content class="" fxLayout="row wrap" fxLayoutAlign="space-between center">
+    <!-- Model -->
+    <div fxLayout="column" fxFlex="100">
+      <mat-form-field class="w-100" appearance="standard">
+        <mat-label>Model:</mat-label>
+        <input matInput type="text" placeholder="Enter Model" #modelNumber="ngModel" name="model" required
+               [(ngModel)]="addEditItemReq.model">
+      </mat-form-field>
+      <mat-error *ngIf="modelNumber.hasError('required')">
+        This field is Required
+      </mat-error>
+    </div>
+    <!-- Name -->
+    <div fxLayout="column" fxFlex="100">
+      <mat-form-field class="w-100" appearance="standard">
+        <mat-label>Name:</mat-label>
+        <input matInput type="text" placeholder="Enter Name" #nameModel="ngModel" required name="name"
+               [(ngModel)]="addEditItemReq.name">
+        <mat-error *ngIf="nameModel.hasError('required')">
+          This field is Required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <!-- Descrption -->
+    <div fxLayout="column" fxFlex="100">
+      <mat-form-field class="w-100" appearance="standard">
+        <mat-label>Description:</mat-label>
+        <textarea matInput type="text" placeholder="Enter Description" #descriptionModel="ngModel" required name="description"
+                  [(ngModel)]="addEditItemReq.specs"></textarea>
+        <mat-error *ngIf="descriptionModel.hasError('required')">
+          This field is Required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <!-- Price -->
+    <div fxLayout="column" fxFlex="100">
+      <mat-form-field class="w-100" appearance="standard">
+        <mat-label>Price:</mat-label>
+        <input matInput type="number" placeholder="Enter Price" #priceModel="ngModel" required name="price" min="0"
+               [(ngModel)]="addEditItemReq.price">
+        <span matPrefix>&#8377;</span>
+        <mat-error *ngIf="priceModel.hasError('required')">
+          This field is Required
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayoutAlign="end center">
+    <button mat-raised-button mat-dialog-close color="accent">Cancel</button>
+    <button mat-raised-button (click)="addEditItem()" class="m-l-20" color="primary" type="button"
+            [disabled]="addEditForm.invalid">{{isUpdate ? 'Update' : 'Add'}}</button>
+  </mat-dialog-actions>
+</form>
